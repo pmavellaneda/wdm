@@ -120,6 +120,12 @@
         <aside>
             <h2>Map Layers</h2>
             <div class="map-selector" id="mapList">
+                <button class="map-btn" 
+                    onclick="loadMap('https://mghydro.com/pages/wdm/', this, true)" 
+                    data-info="Documentation and data source for the Watershed Data Management (WDM) project.">
+                    Data Location
+                </button>
+
                 <button class="map-btn active" 
                     onclick="loadMap('dashboard', this)" 
                     data-info="Simulated and observed suspended sediment concentrations.">
@@ -144,11 +150,6 @@
                     Sediment Delivery Ratios
                 </button>
 
-                <button class="map-btn" 
-                    onclick="loadMap('https://mghydro.com/pages/wdm/', this, true)" 
-                    data-info="Documentation and data source for the Watershed Data Management (WDM) project.">
-                    Data Location
-                </button>
             </div>
 
             <div id="mapDescriptionBox">
