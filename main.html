@@ -113,7 +113,7 @@
 
     <header>
         <h1>Sediment Component</h1>
-        <div style="font-size: 0.8rem; opacity: 0.8;">WDM Hydrology</div>
+        <div style="font-size: 0.8rem; opacity: 0.8;">Watershed Dynamic Model</div>
     </header>
 
     <div class="container">
@@ -122,32 +122,32 @@
             <div class="map-selector" id="mapList">
                 <button class="map-btn" 
                     onclick="loadMap('https://mghydro.com/pages/wdm/', this, true)" 
-                    data-info="Documentation and data source for the Watershed Data Management (WDM) project.">
-                    Data Location
+                    data-info="WDM Web Portal">
+                    WDM Web Portal
                 </button>
 
                 <button class="map-btn active" 
-                    onclick="loadMap('dashboard', this)" 
-                    data-info="Simulated and observed suspended sediment concentrations.">
-                    Discrete SSC
+                    onclick="loadMap('boxplot_sedyield_landuses', this)" 
+                    data-info="Boxplot of sediment yields by land use">
+                    Sediment yields
                 </button>
                 
                 <button class="map-btn" 
-                    onclick="loadMap('suspended_load', this)" 
-                    data-info="Displays fine particles transported in the water column, primarily silt and clay.">
-                    Suspended Sediment
+                    onclick="loadMap('suspended_load_land_use', this)" 
+                    data-info="Supended sediment loads from land surfaces">
+                    Map of sediment loads by subbasin
                 </button>
                 
                 <button class="map-btn" 
-                    onclick="loadMap('bed_load', this)" 
-                    data-info="Shows heavier materials moving along the channel bed, such as gravel and coarse sand.">
-                    Bedload Transport
+                    onclick="loadMap('sediment_delivery_ratios', this)" 
+                    data-info="Sediment delivery ratios by subbasin">
+                    Map of sediment delivery ratios
                 </button>
 				
                 <button class="map-btn" 
-                    onclick="loadMap('sediment_delivery_ratios', this)" 
+                    onclick="loadMap('sediment_land_use_Agriculture', this)" 
                     data-info="Ratio of sediment delivered to the stream system relative to the total amount of erosion in the watershed.">
-                    Sediment Delivery Ratios
+                    Map of sediment yields: Agriculture
                 </button>
 
             </div>
