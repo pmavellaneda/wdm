@@ -1,3 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sediment Component | WDM Viewer</title>
+    <style>
+        /* CSS TO FIX THE LAYOUT */
+        :root {
+            --sidebar-width: 320px;
+            --header-height: 60px;
+            --header-bg: #2c3e50;
+            --sidebar-bg: #f8f9fa;
+            --accent-color: #3498db;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow: hidden; /* Prevents double scrollbars */
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 0 20px;
+            height: var(--header-height);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        header h1 { margin: 0; font-size: 1.4rem; }
+
+        .container {
+            display: flex;
+            height: calc(100vh - var(--header-height));
+            width: 100%;
+        }
+
+        /* Sidebar Styling */
+        aside {
+            width: var(--sidebar-width);
+            min-width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        aside h2 {
+            font-size: 0.9rem;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        .map-selector {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 10px;
+        }
+
+        .map-btn {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .map-btn:hover { background: #eef6fc; border-color: var(--accent-color); }
+
+        .map-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: #2980b9;
+        }
+
+        /* The Comment Box */
+        #mapDescriptionBox {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-left: 4px solid var(--accent-color);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Main Map Area */
+        main {
+            flex-grow: 1;
+            background: #eee;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
 <body>
 
     <header>
@@ -12,7 +127,7 @@
                 <button class="map-btn active" 
                     onclick="loadMap('dashboard', this)" 
                     data-info="Simulated and observed suspended sediment concentrations.">
-                    Total Sediment Load
+                    Discrete SSC
                 </button>
                 
                 <button class="map-btn" 
@@ -37,26 +152,28 @@
             <div id="mapDescriptionBox">
                 Simulated and observed suspended sediment concentrations.
             </div>
-			
         </aside>
 
         <main>
-            <iframe id="mapFrame" src="https://mghydro.com/pages/wdm/map/"></iframe>
+            <iframe id="mapFrame" src="https://pmavellaneda.github.io/wdm/dashboard.html"></iframe>
         </main>
     </div>
 
     <script>
         function loadMap(mapName, element) {
+            // 1. Update the Map source
             const baseUrl = "https://pmavellaneda.github.io/wdm/";
             document.getElementById('mapFrame').src = baseUrl + mapName + ".html";
 
+            // 2. Update button styles
             const buttons = document.querySelectorAll('.map-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             element.classList.add('active');
 
-            // This line now has a valid target to update!
+            // 3. Update the description box text
             const description = element.getAttribute('data-info');
             document.getElementById('mapDescriptionBox').innerText = description;
         }
     </script>
 </body>
+</html>
