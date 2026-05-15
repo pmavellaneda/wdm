@@ -134,4 +134,50 @@
                 
                 <button class="map-btn" 
                     onclick="loadMap('bed_load', this)" 
-                    data-info="Shows heavier materials moving
+                    data-info="Shows heavier materials moving along the channel bed, such as gravel and coarse sand.">
+                    Bedload Transport
+                </button>
+				
+                <button class="map-btn" 
+                    onclick="loadMap('sediment_delivery_ratios', this)" 
+                    data-info="Ratio of sediment delivered to the stream system relative to the total amount of erosion in the watershed.">
+                    Sediment Delivery Ratios
+                </button>
+
+                <button class="map-btn" 
+                    onclick="loadMap('https://mghydro.com/pages/wdm/', this, true)" 
+                    data-info="Documentation and data source for the Watershed Data Management (WDM) project.">
+                    Data Location
+                </button>
+            </div>
+
+            <div id="mapDescriptionBox">
+                Simulated and observed suspended sediment concentrations.
+            </div>
+        </aside>
+
+        <main>
+            <iframe id="mapFrame" src="https://pmavellaneda.github.io/wdm/dashboard.html"></iframe>
+        </main>
+    </div>
+
+    <script>
+        function loadMap(mapPath, element, isExternal = false) {
+            // 1. Build the correct URL based on whether it is local or external
+            const fullUrl = isExternal ? mapPath : `https://pmavellaneda.github.io/wdm/${mapPath}.html`;
+            
+            // 2. Update the iframe source
+            document.getElementById('mapFrame').src = fullUrl;
+
+            // 3. Update button active states
+            const buttons = document.querySelectorAll('.map-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+
+            // 4. Update the description box text
+            const description = element.getAttribute('data-info');
+            document.getElementById('mapDescriptionBox').innerText = description;
+        }
+    </script>
+</body>
+</html>
