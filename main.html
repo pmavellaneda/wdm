@@ -10,7 +10,6 @@
             --header-bg: #2c3e50;
             --sidebar-bg: #f8f9fa;
             --accent-color: #3498db;
-            --text-muted: #666;
         }
 
         body, html {
@@ -37,7 +36,7 @@
 
         .container {
             display: flex;
-            height: calc(100vh - 70px);
+            height: calc(100vh - 50px);
             width: 100%;
         }
 
@@ -87,7 +86,6 @@
             border-color: #2980b9;
         }
 
-        /* The dynamic info box */
         #mapDescriptionBox {
             margin-top: 15px;
             padding: 12px;
@@ -116,9 +114,9 @@
             <h2>Map Layers</h2>
             <div class="map-selector" id="mapList">
                 <button class="map-btn active" 
-                    onclick="loadMap('total_sediment', this)" 
-                    data-info="Total annual sediment yield calculated per sub-basin (tons/year).">
-                    Total Sediment Load
+                    onclick="loadMap('dashboard', this)" 
+                    data-info="Simulated and observed suspended sediment concntrations.">
+                    Descrete SSC
                 </button>
                 
                 <button class="map-btn" 
@@ -132,22 +130,25 @@
                     data-info="Shows heavier materials moving along the channel bed, such as gravel and coarse sand.">
                     Bedload Transport
                 </button>
-            </div>
 
-            <div id="mapDescriptionBox">
-                New text (tons/year).
+                <button class="map-btn" 
+                    onclick="loadMap('sediment_delivery_ratios', this)" 
+                    data-info="Ratio of sediment delivered to the stream system relative to the total amount of erosion in the watershed.">
+                    Sediment Delivery Ratios
+                </button>
             </div>
+			
         </aside>
 
         <main>
-            <iframe id="mapFrame" src="https://pmavellaneda.github.io/wdm/sediment_delivery_ratios.html"></iframe>
+            <iframe id="mapFrame" src="https://mghydro.com/pages/wdm/map/"></iframe>
         </main>
     </div>
 
     <script>
         function loadMap(mapName, element) {
-            // Update the map source
-            const baseUrl = "https://pmavellaneda.github.io/wdm/dashboard.html";
+            // Update the map source using the specific filename provided
+            const baseUrl = "https://pmavellaneda.github.io/wdm/";
             document.getElementById('mapFrame').src = baseUrl + mapName + ".html";
 
             // Update the button styling
@@ -155,7 +156,7 @@
             buttons.forEach(btn => btn.classList.remove('active'));
             element.classList.add('active');
 
-            // Update the description box text
+            // Update the description box text from the data-info attribute
             const description = element.getAttribute('data-info');
             document.getElementById('mapDescriptionBox').innerText = description;
         }
