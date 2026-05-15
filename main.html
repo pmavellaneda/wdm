@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sediment Component | WDM Viewer</title>
     <style>
-        /* CSS TO FIX THE LAYOUT */
         :root {
             --sidebar-width: 320px;
             --header-height: 60px;
@@ -19,7 +18,7 @@
             padding: 0;
             height: 100%;
             font-family: 'Segoe UI', Arial, sans-serif;
-            overflow: hidden; /* Prevents double scrollbars */
+            overflow: hidden; 
         }
 
         header {
@@ -40,7 +39,6 @@
             width: 100%;
         }
 
-        /* Sidebar Styling */
         aside {
             width: var(--sidebar-width);
             min-width: var(--sidebar-width);
@@ -64,7 +62,7 @@
 
         .map-selector {
             display: flex;
-            flex-direction: column; /* Stack buttons vertically */
+            flex-direction: column;
             gap: 10px;
         }
 
@@ -88,7 +86,6 @@
             border-color: #2980b9;
         }
 
-        /* The Comment Box */
         #mapDescriptionBox {
             margin-top: 20px;
             padding: 15px;
@@ -100,7 +97,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Main Map Area */
         main {
             flex-grow: 1;
             background: #eee;
@@ -138,47 +134,4 @@
                 
                 <button class="map-btn" 
                     onclick="loadMap('bed_load', this)" 
-                    data-info="Shows heavier materials moving along the channel bed, such as gravel and coarse sand.">
-                    Bedload Transport
-                </button>
-
-                <button class="map-btn" 
-                    onclick="https://mghydro.com/pages/wdm/map/" 
-                    data-info="Ratio of sediment delivered to the stream system relative to the total amount of erosion in the watershed.">
-                    Sediment Delivery Ratios
-                </button>
-                <button class="map-btn" 
-                    onclick="loadMap('sediment_delivery_ratios', this)" 
-                    data-info="Ratio of sediment delivered to the stream system relative to the total amount of erosion in the watershed.">
-                    Sediment Delivery Ratios
-                </button>				
-            </div>
-
-            <div id="mapDescriptionBox">
-                Simulated and observed suspended sediment concentrations.
-            </div>
-        </aside>
-
-        <main>
-            <iframe id="mapFrame" src="https://pmavellaneda.github.io/wdm/dashboard.html"></iframe>
-        </main>
-    </div>
-
-    <script>
-        function loadMap(mapName, element) {
-            // 1. Update the Map source
-            const baseUrl = "https://pmavellaneda.github.io/wdm/";
-            document.getElementById('mapFrame').src = baseUrl + mapName + ".html";
-
-            // 2. Update button styles
-            const buttons = document.querySelectorAll('.map-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-
-            // 3. Update the description box text
-            const description = element.getAttribute('data-info');
-            document.getElementById('mapDescriptionBox').innerText = description;
-        }
-    </script>
-</body>
-</html>
+                    data-info="Shows heavier materials moving
