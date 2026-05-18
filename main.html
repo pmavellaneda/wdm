@@ -194,9 +194,39 @@
 
                 <button class="map-btn" 
                     onclick="loadMap('dashboard', this)" 
-                    data-info="SSC calibration dashboard">
-                    Plots of observed vs. simulated SSC at calibration stations 
+                    data-info="Plots of observed vs. simulated SSC at calibration stations">
+                    SSC calibration dashboard (discrete) 
                 </button>
+
+                <button class="map-btn" 
+                    onclick="loadMap('dashboard_cdfs', this)" 
+                    data-info="Plots of observed vs. simulated time series of SSC at calibration stations">
+                    SSC calibration dashboard (continuous time series) 
+                </button>
+
+                <button class="map-btn" 
+                    onclick="loadMap('dashboard_cdfs', this)" 
+                    data-info="Plots of observed vs. simulated distributions of SSC at calibration stations">
+                    SSC calibration dashboard (continuous) 
+                </button>
+
+                <button class="map-btn" 
+                    onclick="loadMap('dashboard_fractions', this)" 
+                    data-info="Plots of observed vs. simulated SSC by fractions at calibration sites">
+                    Simulated SSC by fraction (sand, silt, clay) 
+                </button>
+				
+                <button class="map-btn" 
+                    onclick="loadMap('dashboard_rating', this)" 
+                    data-info="Plots of observed vs. simulated SSC rating curves">
+                    Rating curves (discharge vs. SSC) 
+                </button>				
+
+                <button class="map-btn" 
+                    onclick="loadMap('dashboard_reservoir', this)" 
+                    data-info="Plots of suspended sediment loads in reservoirs">
+                    Reservoirs
+                </button>	
 				
                 <button class="map-btn" 
                     onclick="loadMap('sediment_load_reaches', this)" 
